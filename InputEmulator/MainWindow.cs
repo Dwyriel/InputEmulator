@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
 
@@ -30,7 +24,13 @@ namespace InputEmulator
         private static extern int FindWindowEx(int parentHandle, int childAfter, string lclassName, string windowTitle);
         #endregion
 
+        #region Attributes
         InputSimulator inputSimulator = new InputSimulator();
+        // 0 hotkeysCheckbox More, 1 alwaysOnTopCheckbox More, 2 ShowMore More, 3 hotkeysCheckbox Less, 4 alwaysOnTopCheckbox Less, 5 ShowMore Less
+        Point[] points = { new Point(15, 287), new Point(15, 316), new Point(273, 309), new Point(15, 83), new Point(15, 112), new Point(273, 105) };
+        // 0 form size more, 1 form size less
+        Size[] formSizes = { new Size(415, 392), new Size(415, 188) };
+        #endregion
 
         #region Controctor
         public MainWindow()
@@ -167,12 +167,26 @@ namespace InputEmulator
             ConfigManager.Config.EnableHotkeys = HotkeysCheckbox.Checked;
             if (ConfigManager.Config.EnableHotkeys)
                 RegisterHotKeys();
+            ConfigManager.Save();
         }
 
         private void AlwaysOnTopCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             ConfigManager.Config.AlwaysOnTop = AlwaysOnTopCheckbox.Checked;
             TopMost = ConfigManager.Config.AlwaysOnTop;
+            ConfigManager.Save();
+        }
+        #endregion
+
+        #region Show More Buttons
+        private void MoreButtonsBtn_Click(object sender, EventArgs e)
+        {
+            ConfigManager.Config.ExtraButtons = !ConfigManager.Config.ExtraButtons;
+            if (ConfigManager.Config.ExtraButtons)
+                ShowMoreButtons();
+            else
+                ShowLessButtons();
+            ConfigManager.Save();
         }
         #endregion
         #endregion
@@ -196,6 +210,50 @@ namespace InputEmulator
             TopMost = ConfigManager.Config.AlwaysOnTop;
             HotkeysCheckbox.Checked = ConfigManager.Config.EnableHotkeys;
             AlwaysOnTopCheckbox.Checked = ConfigManager.Config.AlwaysOnTop;
+            if (ConfigManager.Config.ExtraButtons)
+                ShowMoreButtons();
+            else
+                ShowLessButtons();
+        }
+
+        void ShowMoreButtons()
+        {
+            MoreButtonsBtn.Text = "Show Less";
+            SetButtonsVisibility(true);
+            HotkeysCheckbox.Location = points[0];
+            AlwaysOnTopCheckbox.Location = points[1];
+            MoreButtonsBtn.Location = points[2];
+            Size = formSizes[0];
+        }
+
+        void ShowLessButtons()
+        {
+            MoreButtonsBtn.Text = "Show More";
+            SetButtonsVisibility(false);
+            HotkeysCheckbox.Location = points[3];
+            AlwaysOnTopCheckbox.Location = points[4];
+            MoreButtonsBtn.Location = points[5];
+            Size = formSizes[1];
+        }
+
+        void SetButtonsVisibility(bool isVisible)
+        {
+            Input2Btn.Visible = isVisible;
+            Input3Btn.Visible = isVisible;
+            Input4Btn.Visible = isVisible;
+            Input5Btn.Visible = isVisible;
+            Hotkey2Btn.Visible = isVisible;
+            Hotkey3Btn.Visible = isVisible;
+            Hotkey4Btn.Visible = isVisible;
+            Hotkey5Btn.Visible = isVisible;
+            hyphen2Label.Visible = isVisible;
+            hyphen3Label.Visible = isVisible;
+            hyphen4Label.Visible = isVisible;
+            hyphen5Label.Visible = isVisible;
+            toggleInput2Btn.Visible = isVisible;
+            toggleInput3Btn.Visible = isVisible;
+            toggleInput4Btn.Visible = isVisible;
+            toggleInput5Btn.Visible = isVisible;
         }
 
         void SetButtonsText()

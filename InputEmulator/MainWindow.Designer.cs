@@ -53,13 +53,14 @@ namespace InputEmulator
             this.hyphen5Label = new System.Windows.Forms.Label();
             this.HotkeysCheckbox = new System.Windows.Forms.CheckBox();
             this.AlwaysOnTopCheckbox = new System.Windows.Forms.CheckBox();
+            this.MoreButtonsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // InputLabel
             // 
             this.InputLabel.AutoSize = true;
             this.InputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputLabel.Location = new System.Drawing.Point(49, 25);
+            this.InputLabel.Location = new System.Drawing.Point(49, 5);
             this.InputLabel.Name = "InputLabel";
             this.InputLabel.Size = new System.Drawing.Size(62, 24);
             this.InputLabel.TabIndex = 0;
@@ -70,7 +71,7 @@ namespace InputEmulator
             // 
             this.HotkeyLabel.AutoSize = true;
             this.HotkeyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HotkeyLabel.Location = new System.Drawing.Point(179, 25);
+            this.HotkeyLabel.Location = new System.Drawing.Point(179, 5);
             this.HotkeyLabel.Name = "HotkeyLabel";
             this.HotkeyLabel.Size = new System.Drawing.Size(80, 24);
             this.HotkeyLabel.TabIndex = 1;
@@ -80,7 +81,7 @@ namespace InputEmulator
             // Input1Btn
             // 
             this.Input1Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input1Btn.Location = new System.Drawing.Point(12, 52);
+            this.Input1Btn.Location = new System.Drawing.Point(12, 32);
             this.Input1Btn.Name = "Input1Btn";
             this.Input1Btn.Size = new System.Drawing.Size(134, 45);
             this.Input1Btn.TabIndex = 2;
@@ -91,7 +92,7 @@ namespace InputEmulator
             // Input2Btn
             // 
             this.Input2Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input2Btn.Location = new System.Drawing.Point(12, 103);
+            this.Input2Btn.Location = new System.Drawing.Point(12, 83);
             this.Input2Btn.Name = "Input2Btn";
             this.Input2Btn.Size = new System.Drawing.Size(134, 45);
             this.Input2Btn.TabIndex = 3;
@@ -102,7 +103,7 @@ namespace InputEmulator
             // Input3Btn
             // 
             this.Input3Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input3Btn.Location = new System.Drawing.Point(12, 154);
+            this.Input3Btn.Location = new System.Drawing.Point(12, 134);
             this.Input3Btn.Name = "Input3Btn";
             this.Input3Btn.Size = new System.Drawing.Size(134, 45);
             this.Input3Btn.TabIndex = 4;
@@ -113,7 +114,7 @@ namespace InputEmulator
             // Input4Btn
             // 
             this.Input4Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input4Btn.Location = new System.Drawing.Point(12, 205);
+            this.Input4Btn.Location = new System.Drawing.Point(12, 185);
             this.Input4Btn.Name = "Input4Btn";
             this.Input4Btn.Size = new System.Drawing.Size(134, 45);
             this.Input4Btn.TabIndex = 5;
@@ -124,7 +125,7 @@ namespace InputEmulator
             // Input5Btn
             // 
             this.Input5Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input5Btn.Location = new System.Drawing.Point(12, 256);
+            this.Input5Btn.Location = new System.Drawing.Point(12, 236);
             this.Input5Btn.Name = "Input5Btn";
             this.Input5Btn.Size = new System.Drawing.Size(134, 45);
             this.Input5Btn.TabIndex = 6;
@@ -135,7 +136,7 @@ namespace InputEmulator
             // Hotkey1Btn
             // 
             this.Hotkey1Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hotkey1Btn.Location = new System.Drawing.Point(152, 52);
+            this.Hotkey1Btn.Location = new System.Drawing.Point(152, 32);
             this.Hotkey1Btn.Name = "Hotkey1Btn";
             this.Hotkey1Btn.Size = new System.Drawing.Size(134, 45);
             this.Hotkey1Btn.TabIndex = 7;
@@ -146,7 +147,7 @@ namespace InputEmulator
             // Hotkey2Btn
             // 
             this.Hotkey2Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hotkey2Btn.Location = new System.Drawing.Point(152, 103);
+            this.Hotkey2Btn.Location = new System.Drawing.Point(152, 83);
             this.Hotkey2Btn.Name = "Hotkey2Btn";
             this.Hotkey2Btn.Size = new System.Drawing.Size(134, 45);
             this.Hotkey2Btn.TabIndex = 8;
@@ -157,7 +158,7 @@ namespace InputEmulator
             // Hotkey3Btn
             // 
             this.Hotkey3Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hotkey3Btn.Location = new System.Drawing.Point(152, 154);
+            this.Hotkey3Btn.Location = new System.Drawing.Point(152, 134);
             this.Hotkey3Btn.Name = "Hotkey3Btn";
             this.Hotkey3Btn.Size = new System.Drawing.Size(134, 45);
             this.Hotkey3Btn.TabIndex = 9;
@@ -168,7 +169,7 @@ namespace InputEmulator
             // Hotkey4Btn
             // 
             this.Hotkey4Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hotkey4Btn.Location = new System.Drawing.Point(152, 205);
+            this.Hotkey4Btn.Location = new System.Drawing.Point(152, 185);
             this.Hotkey4Btn.Name = "Hotkey4Btn";
             this.Hotkey4Btn.Size = new System.Drawing.Size(134, 45);
             this.Hotkey4Btn.TabIndex = 10;
@@ -179,7 +180,7 @@ namespace InputEmulator
             // Hotkey5Btn
             // 
             this.Hotkey5Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hotkey5Btn.Location = new System.Drawing.Point(152, 256);
+            this.Hotkey5Btn.Location = new System.Drawing.Point(152, 236);
             this.Hotkey5Btn.Name = "Hotkey5Btn";
             this.Hotkey5Btn.Size = new System.Drawing.Size(134, 45);
             this.Hotkey5Btn.TabIndex = 11;
@@ -190,7 +191,7 @@ namespace InputEmulator
             // toggleInput1Btn
             // 
             this.toggleInput1Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleInput1Btn.Location = new System.Drawing.Point(308, 58);
+            this.toggleInput1Btn.Location = new System.Drawing.Point(308, 38);
             this.toggleInput1Btn.Name = "toggleInput1Btn";
             this.toggleInput1Btn.Size = new System.Drawing.Size(80, 35);
             this.toggleInput1Btn.TabIndex = 12;
@@ -202,7 +203,7 @@ namespace InputEmulator
             // 
             this.hyphen1Label.AutoSize = true;
             this.hyphen1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyphen1Label.Location = new System.Drawing.Point(290, 62);
+            this.hyphen1Label.Location = new System.Drawing.Point(290, 42);
             this.hyphen1Label.Name = "hyphen1Label";
             this.hyphen1Label.Size = new System.Drawing.Size(16, 22);
             this.hyphen1Label.TabIndex = 17;
@@ -212,7 +213,7 @@ namespace InputEmulator
             // toggleInput2Btn
             // 
             this.toggleInput2Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleInput2Btn.Location = new System.Drawing.Point(308, 109);
+            this.toggleInput2Btn.Location = new System.Drawing.Point(308, 89);
             this.toggleInput2Btn.Name = "toggleInput2Btn";
             this.toggleInput2Btn.Size = new System.Drawing.Size(80, 35);
             this.toggleInput2Btn.TabIndex = 18;
@@ -223,7 +224,7 @@ namespace InputEmulator
             // toggleInput3Btn
             // 
             this.toggleInput3Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleInput3Btn.Location = new System.Drawing.Point(308, 160);
+            this.toggleInput3Btn.Location = new System.Drawing.Point(308, 140);
             this.toggleInput3Btn.Name = "toggleInput3Btn";
             this.toggleInput3Btn.Size = new System.Drawing.Size(80, 35);
             this.toggleInput3Btn.TabIndex = 19;
@@ -234,7 +235,7 @@ namespace InputEmulator
             // toggleInput4Btn
             // 
             this.toggleInput4Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleInput4Btn.Location = new System.Drawing.Point(308, 211);
+            this.toggleInput4Btn.Location = new System.Drawing.Point(308, 191);
             this.toggleInput4Btn.Name = "toggleInput4Btn";
             this.toggleInput4Btn.Size = new System.Drawing.Size(80, 35);
             this.toggleInput4Btn.TabIndex = 20;
@@ -245,7 +246,7 @@ namespace InputEmulator
             // toggleInput5Btn
             // 
             this.toggleInput5Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleInput5Btn.Location = new System.Drawing.Point(308, 262);
+            this.toggleInput5Btn.Location = new System.Drawing.Point(308, 242);
             this.toggleInput5Btn.Name = "toggleInput5Btn";
             this.toggleInput5Btn.Size = new System.Drawing.Size(80, 35);
             this.toggleInput5Btn.TabIndex = 21;
@@ -257,7 +258,7 @@ namespace InputEmulator
             // 
             this.hyphen2Label.AutoSize = true;
             this.hyphen2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyphen2Label.Location = new System.Drawing.Point(290, 111);
+            this.hyphen2Label.Location = new System.Drawing.Point(290, 91);
             this.hyphen2Label.Name = "hyphen2Label";
             this.hyphen2Label.Size = new System.Drawing.Size(16, 22);
             this.hyphen2Label.TabIndex = 22;
@@ -268,7 +269,7 @@ namespace InputEmulator
             // 
             this.hyphen3Label.AutoSize = true;
             this.hyphen3Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyphen3Label.Location = new System.Drawing.Point(290, 162);
+            this.hyphen3Label.Location = new System.Drawing.Point(290, 142);
             this.hyphen3Label.Name = "hyphen3Label";
             this.hyphen3Label.Size = new System.Drawing.Size(16, 22);
             this.hyphen3Label.TabIndex = 23;
@@ -279,7 +280,7 @@ namespace InputEmulator
             // 
             this.hyphen4Label.AutoSize = true;
             this.hyphen4Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyphen4Label.Location = new System.Drawing.Point(290, 214);
+            this.hyphen4Label.Location = new System.Drawing.Point(290, 194);
             this.hyphen4Label.Name = "hyphen4Label";
             this.hyphen4Label.Size = new System.Drawing.Size(16, 22);
             this.hyphen4Label.TabIndex = 24;
@@ -290,7 +291,7 @@ namespace InputEmulator
             // 
             this.hyphen5Label.AutoSize = true;
             this.hyphen5Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyphen5Label.Location = new System.Drawing.Point(290, 265);
+            this.hyphen5Label.Location = new System.Drawing.Point(290, 245);
             this.hyphen5Label.Name = "hyphen5Label";
             this.hyphen5Label.Size = new System.Drawing.Size(16, 22);
             this.hyphen5Label.TabIndex = 25;
@@ -303,7 +304,7 @@ namespace InputEmulator
             this.HotkeysCheckbox.Checked = true;
             this.HotkeysCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.HotkeysCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HotkeysCheckbox.Location = new System.Drawing.Point(15, 307);
+            this.HotkeysCheckbox.Location = new System.Drawing.Point(15, 287);
             this.HotkeysCheckbox.Name = "HotkeysCheckbox";
             this.HotkeysCheckbox.Size = new System.Drawing.Size(96, 28);
             this.HotkeysCheckbox.TabIndex = 28;
@@ -315,7 +316,7 @@ namespace InputEmulator
             // 
             this.AlwaysOnTopCheckbox.AutoSize = true;
             this.AlwaysOnTopCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AlwaysOnTopCheckbox.Location = new System.Drawing.Point(15, 341);
+            this.AlwaysOnTopCheckbox.Location = new System.Drawing.Point(15, 316);
             this.AlwaysOnTopCheckbox.Name = "AlwaysOnTopCheckbox";
             this.AlwaysOnTopCheckbox.Size = new System.Drawing.Size(158, 28);
             this.AlwaysOnTopCheckbox.TabIndex = 29;
@@ -323,11 +324,23 @@ namespace InputEmulator
             this.AlwaysOnTopCheckbox.UseVisualStyleBackColor = true;
             this.AlwaysOnTopCheckbox.CheckedChanged += new System.EventHandler(this.AlwaysOnTopCheckbox_CheckedChanged);
             // 
+            // MoreButtonsBtn
+            // 
+            this.MoreButtonsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoreButtonsBtn.Location = new System.Drawing.Point(273, 309);
+            this.MoreButtonsBtn.Name = "MoreButtonsBtn";
+            this.MoreButtonsBtn.Size = new System.Drawing.Size(115, 35);
+            this.MoreButtonsBtn.TabIndex = 30;
+            this.MoreButtonsBtn.Text = "Show Less";
+            this.MoreButtonsBtn.UseVisualStyleBackColor = true;
+            this.MoreButtonsBtn.Click += new System.EventHandler(this.MoreButtonsBtn_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 553);
+            this.ClientSize = new System.Drawing.Size(399, 353);
+            this.Controls.Add(this.MoreButtonsBtn);
             this.Controls.Add(this.AlwaysOnTopCheckbox);
             this.Controls.Add(this.HotkeysCheckbox);
             this.Controls.Add(this.hyphen5Label);
@@ -387,6 +400,7 @@ namespace InputEmulator
         private System.Windows.Forms.Label hyphen5Label;
         private System.Windows.Forms.CheckBox HotkeysCheckbox;
         private System.Windows.Forms.CheckBox AlwaysOnTopCheckbox;
+        private System.Windows.Forms.Button MoreButtonsBtn;
     }
 }
 

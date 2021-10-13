@@ -84,7 +84,7 @@ namespace InputEmulator
     public class Configuration
     {
         public Point StartPosition = new Point(300, 300);
-        public bool AlwaysOnTop = false, EnableHotkeys = true, extraButtons = false;
+        public bool AlwaysOnTop = false, EnableHotkeys = true, ExtraButtons = false;
         public InputHotkey InputHotkey1 = new InputHotkey(Keys.W, Keys.D1);
         public InputHotkey InputHotkey2 = new InputHotkey();
         public InputHotkey InputHotkey3 = new InputHotkey();
