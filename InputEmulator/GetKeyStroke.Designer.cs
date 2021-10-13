@@ -74,6 +74,7 @@ namespace InputEmulator
             this.Controls.Add(this.label1);
             this.Name = "GetKeyStroke";
             this.Text = "Hotkey";
+            this.Load += new System.EventHandler(this.GetKeyStroke_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
