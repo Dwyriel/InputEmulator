@@ -13,6 +13,12 @@ namespace InputEmulator
 {
     public partial class MainWindow : Form
     {
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
         InputSimulator inputSimulator = new InputSimulator();
 
         public MainWindow()
@@ -29,54 +35,47 @@ namespace InputEmulator
         {
             UnregisterHotKeys();
         }
+
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x0312)
             {
                 int keyValue = m.WParam.ToInt32();
                 if (keyValue == (int)Keys.Add)
-                    Task.Factory.StartNew(someMethod);
+                    ToggleKey(Keys.W);
             }
             base.WndProc(ref m);
         }
 
-        bool toggled = false;
-        void someMethod()
+        void ToggleKey(Keys key)
         {
-            toggled = !toggled;
-            if (toggled)
-                inputSimulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.VK_W);
+            if (!inputSimulator.InputDeviceState.IsKeyDown((WindowsInput.Native.VirtualKeyCode)key))
+                inputSimulator.Keyboard.KeyDown((WindowsInput.Native.VirtualKeyCode)key);
             else
-                inputSimulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.VK_W);
-            /*while (toggled)
-            {
-                if (inputSimulator.InputDeviceState.IsKeyDown(WindowsInput.Native.VirtualKeyCode.VK_W))
-                {
-                    toggled = !toggled;
-                    break;
-                }
-                inputSimulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.VK_W);
-                inputSimulator.Keyboard.Sleep(100);
-                inputSimulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.VK_W);
-            }*/
+                inputSimulator.Keyboard.KeyUp((WindowsInput.Native.VirtualKeyCode)key);
         }
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+        private GetKeyStroke GenNewKeystrokeForm()
+        {
+            return new GetKeyStroke()
+            {//todo Icon thingy
+                //Icon = Properties.Resources.icon,
+                Owner = this,
+                StartPosition = FormStartPosition.CenterParent,
+                FormBorderStyle = FormBorderStyle.FixedSingle,
+                TopMost = this.TopMost,
+                MaximizeBox = false
+            };
+        }
 
         private void RegisterHotKeys()
         {
             RegisterHotKey(this.Handle, (int)Keys.Add, 0, (int)Keys.Add);
-            RegisterHotKey(this.Handle, (int)Keys.W, 0, (int)Keys.W);
         }
 
         private void UnregisterHotKeys()
         {
             RegisterHotKey(this.Handle, (int)Keys.Add, 0, (int)Keys.Add);
-            RegisterHotKey(this.Handle, (int)Keys.W, 0, (int)Keys.W);
         }
     }
 }
