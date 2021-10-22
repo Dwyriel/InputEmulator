@@ -15,11 +15,21 @@ namespace InputEmulator
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetWindowPos(IntPtr handle, int handleInsertAfter, int x, int y, int width, int height, uint flags);
+
+        //not being used
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(int hWnd);
 
+        //not being used
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int GetForegroundWindow();
+
+        //not being used
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int FindWindow(string className, string windowText);
 
+        //not being used
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int FindWindowEx(int parentHandle, int childAfter, string lclassName, string windowTitle);
         #endregion
@@ -130,31 +140,36 @@ namespace InputEmulator
 
         private void toggleInput1Btn_Click(object sender, EventArgs e)
         {
-            FindGameWindow();
+            StopPreviousInputs();
+            SwitchWindow();
             ToggleTimer(ConfigManager.Config.InputHotkey1.input);
         }
 
         private void toggleInput2Btn_Click(object sender, EventArgs e)
         {
-            FindGameWindow();
+            StopPreviousInputs();
+            SwitchWindow();
             ToggleTimer(ConfigManager.Config.InputHotkey2.input);
         }
 
         private void toggleInput3Btn_Click(object sender, EventArgs e)
         {
-            FindGameWindow();
+            StopPreviousInputs();
+            SwitchWindow();
             ToggleTimer(ConfigManager.Config.InputHotkey3.input);
         }
 
         private void toggleInput4Btn_Click(object sender, EventArgs e)
         {
-            FindGameWindow();
+            StopPreviousInputs();
+            SwitchWindow();
             ToggleTimer(ConfigManager.Config.InputHotkey4.input);
         }
 
         private void toggleInput5Btn_Click(object sender, EventArgs e)
         {
-            FindGameWindow();
+            StopPreviousInputs();
+            SwitchWindow();
             ToggleTimer(ConfigManager.Config.InputHotkey5.input);
         }
         #endregion
@@ -303,26 +318,17 @@ namespace InputEmulator
 
         void ToggleKey(WindowsInput.Native.VirtualKeyCode key)
         {
-            if (!inputSimulator.InputDeviceState.IsKeyDown(key))
+            if (!inputSimulator.InputDeviceState.IsHardwareKeyDown(key))
                 inputSimulator.Keyboard.KeyDown(key);
             else
                 inputSimulator.Keyboard.KeyUp(key);
         }
 
-        void FindGameWindow()
-        {
-            int hWnd = FindWindowEx(0, 0, null, "MONSTER HUNTER STORIES 2: WINGS OF RUIN");
-            if (hWnd != 0)
-                SetForegroundWindow(hWnd);
-            else
-                AltTab();
-        }
-
-        void AltTab()
+        void SwitchWindow()
         {
             inputSimulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.MENU);
-            inputSimulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.TAB);
-            inputSimulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.TAB);
+            inputSimulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.ESCAPE);
+            inputSimulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.ESCAPE);
             inputSimulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.MENU);
         }
 
@@ -332,11 +338,27 @@ namespace InputEmulator
             timer.Tick += (object sender2, EventArgs e2) =>
             {
                 ToggleKey((WindowsInput.Native.VirtualKeyCode)value);
+                SetWindowPos(this.Handle, -1, 0, 0, 0, 0, 0x0010 | 0x0002 | 0x0001);// 0x0001 == NoResize | 0x0002 == NoMove | 0x0010 == NoActive
+                TopMost = ConfigManager.Config.AlwaysOnTop;
                 timer.Stop();
                 timer.Dispose();
             };
             timer.Interval = delay;
             timer.Start();
+        }
+
+        void StopPreviousInputs()
+        {
+            if (ConfigManager.Config.InputHotkey1.input != 0 && inputSimulator.InputDeviceState.IsHardwareKeyDown((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey1.input))
+                inputSimulator.Keyboard.KeyUp((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey1.input);
+            if (ConfigManager.Config.InputHotkey2.input != 0 && inputSimulator.InputDeviceState.IsHardwareKeyDown((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey2.input))
+                inputSimulator.Keyboard.KeyUp((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey2.input);
+            if (ConfigManager.Config.InputHotkey3.input != 0 && inputSimulator.InputDeviceState.IsHardwareKeyDown((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey3.input))
+                inputSimulator.Keyboard.KeyUp((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey3.input);
+            if (ConfigManager.Config.InputHotkey4.input != 0 && inputSimulator.InputDeviceState.IsHardwareKeyDown((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey4.input))
+                inputSimulator.Keyboard.KeyUp((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey4.input);
+            if (ConfigManager.Config.InputHotkey5.input != 0 && inputSimulator.InputDeviceState.IsHardwareKeyDown((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey5.input))
+                inputSimulator.Keyboard.KeyUp((WindowsInput.Native.VirtualKeyCode)ConfigManager.Config.InputHotkey5.input);
         }
 
         private void RegisterHotKeys()
